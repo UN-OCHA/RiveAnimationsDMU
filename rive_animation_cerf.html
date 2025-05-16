@@ -4,9 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rive Animation</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+    .canvas-container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    canvas {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
 </head>
-<body style="margin: 0; padding: 0; background: #fff;">
-  <canvas id="riveCanvas" width="960" height="285" style="display: block; margin: auto;"></canvas>
+<body>
+  <div class="canvas-container">
+    <canvas id="riveCanvas"></canvas>
+  </div>
+
   <script src="https://unpkg.com/@rive-app/canvas"></script>
   <script>
     new rive.Rive({
