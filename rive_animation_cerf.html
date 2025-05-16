@@ -3,18 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rive Animation</title>
+  <title>Rive Animation CERF</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+    .canvas-container {
+      width: 100%;
+      max-width: 960px;
+      margin: auto;
+    }
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  </style>
 </head>
-<body style="margin: 0; padding: 0; background: #fff;">
-  <canvas id="riveCanvas" width="960" height="285" style="display: block; margin: auto;"></canvas>
+<body>
+  <div class="canvas-container">
+    <canvas id="riveCanvas"></canvas>
+  </div>
+
   <script src="https://unpkg.com/@rive-app/canvas"></script>
   <script>
+    const canvas = document.getElementById('riveCanvas');
+    const container = canvas.parentElement;
+
+    function resizeCanvas() {
+      const width = container.offsetWidth;
+      const height = width * (285 / 960); // maintain aspect ratio
+      const ratio = window.devicePixelRatio || 1;
+
+      canvas.width = width * ratio;
+      canvas.height = height * ratio;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+    }
+
+    // Resize once at start
+    resizeCanvas();
+
+    // Optional: re-resize on window resize
+    window.addEventListener('resize', resizeCanvas);
+
     new rive.Rive({
       src: 'https://raw.githubusercontent.com/UN-OCHA/RiveAnimationsDMU/main/cerf_20_figures.riv',
-      canvas: document.getElementById('riveCanvas'),
+      canvas: canvas,
       autoplay: true,
       artboard: 'Figures Main',
-      stateMachines: ['State Machine 1']
+      stateMachines: ['State Machine 1'],
+      fit: rive.Fit.Contain
     });
   </script>
 </body>
