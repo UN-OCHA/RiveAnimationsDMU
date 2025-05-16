@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rive Animation</title>
+</head>
+<body style="margin: 0; padding: 0; background: #fff;">
+  <canvas id="riveCanvas" width="960" height="285" style="display: block; margin: auto;"></canvas>
+  <script src="https://unpkg.com/@rive-app/canvas"></script>
+  <script>
+    new rive.Rive({
+      src: 'https://raw.githubusercontent.com/UN-OCHA/RiveAnimationsDMU/main/cerf_20_figures.riv',
+      canvas: document.getElementById('riveCanvas'),
+      autoplay: true,
+      artboard: 'Figures Main',
+      stateMachines: ['State Machine 1']
+    });
+  </script>
+</body>
+</html>
